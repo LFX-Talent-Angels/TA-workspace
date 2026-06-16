@@ -23,7 +23,9 @@ Tokens Proof-of-Learning (PoL) layer by Week 26.
 ## NOW · COMMITTED · Sprints 1–2 · Weeks 1–4
 
 ### Sprint 1 · Wk 1–2 — Foundations
-Understand knowledge graphs + define purpose & scope.
+Understand knowledge graphs + define purpose & scope. Detailed brief (goal,
+dynamic, taxonomy basics, learning resources, KG build example):
+[`docs/sprints/sprint-01-knowledge-graphs.md`](./docs/sprints/sprint-01-knowledge-graphs.md).
 - Research KGs and **build a small graph of one taxonomy** (the exercise lives in
   [`TA-lab/exercises/sprint-01-taxonomy-graph/`](../TA-lab/exercises/sprint-01-taxonomy-graph)).
   This doubles as **familiarization** (theory + hands-on with graphs) and lets
