@@ -48,6 +48,26 @@ reasonable review window is accepted. Mentors break ties.
 - Mentors merge via **squash**, preserving the DCO sign-off.
 - Never push directly to `main`.
 
+## Branch protection (enforced on GitHub)
+
+The merge rules above are not just convention — `main` is **protected on GitHub**
+in every repo:
+
+- A **pull request with ≥ 1 approving review** is required to merge; stale
+  approvals are dismissed on new pushes.
+- **Force-pushes and branch deletion are blocked**; linear history is required.
+- `enforce_admins` is **off** so mentors/admins can still merge while the cohort
+  is small and there isn't a second reviewer yet.
+
+This is applied (and re-applied) reproducibly by
+[`bin/protect-branches.sh`](./bin/protect-branches.sh) via the GitHub API — run
+it after creating a new repo. Note: branch protection is free for **public**
+repos; a **private** repo would need GitHub Team/Enterprise.
+
+The **DCO check** (`.github/workflows/dco.yml`) runs on every PR. Once it has run
+at least once, it can be made a *required status check* so no PR merges without
+passing it.
+
 ## Meetings & sprints
 
 The project follows Agile sprints. Progress is presented at three virtual
