@@ -53,6 +53,7 @@ Before making changes, read local instructions in this order:
 | `TA-agents`    | `TA-agents`     | Main project: the AI Graph Agents + Graph-RAG code | Apache-2.0   |
 | `TA-resources` | `TA-resources`  | Shared educational resources for all contributors  | CC-BY-4.0    |
 | `TA-memory`    | `TA-memory`     | Project memory: proposal, decisions, notes, log    | CC-BY-4.0    |
+| `TA-lab`       | `TA-lab`        | Practice & experiments sandbox (exercises, spikes) | Apache-2.0   |
 
 The original project proposal lives in `TA-memory/proposals/original-proposal.md`.
 

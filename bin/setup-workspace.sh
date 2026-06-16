@@ -9,7 +9,7 @@
 set -euo pipefail
 
 ORG="LFX-Talent-Angels"
-SUBREPOS=("TA-agents" "TA-resources" "TA-memory")
+SUBREPOS=("TA-agents" "TA-resources" "TA-memory" "TA-lab")
 
 # Resolve the meta-repo root (parent of this script's bin/ dir).
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

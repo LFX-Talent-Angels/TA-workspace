@@ -42,7 +42,8 @@ TA-workspace/                 ← this meta-repo
 │   └── meetups/              ← meetup notes + templates
 ├── TA-agents/                ← subrepo: the AI Graph Agents (Python)
 ├── TA-resources/             ← subrepo: shared educational resources
-└── TA-memory/                ← subrepo: project memory (proposal, decisions, log)
+├── TA-memory/                ← subrepo: project memory (proposal, decisions, log)
+└── TA-lab/                   ← subrepo: practice & experiments sandbox
 ```
 
 ## Repos in the org
@@ -53,6 +54,7 @@ TA-workspace/                 ← this meta-repo
 | [`TA-agents`](../TA-agents)                      | Main project: AI Graph Agents + Graph-RAG  |
 | [`TA-resources`](../TA-resources)                | Educational resources for all contributors |
 | [`TA-memory`](../TA-memory)                      | Project memory: proposal, ADRs, notes      |
+| [`TA-lab`](../TA-lab)                            | Practice & experiments sandbox (exercises) |
 
 ## Setup
 
@@ -76,12 +78,29 @@ bash bin/setup-workspace.sh
 The subrepos are cloned **into** this folder as siblings of `docs/`. They are
 ignored by the meta-repo's git, so each one keeps its own history.
 
+### What `bin/setup-workspace.sh` does
+
+For transparency, the script (≈70 lines, no magic) does exactly this:
+
+1. **Clones the subrepos** `TA-agents`, `TA-resources`, `TA-memory`, and `TA-lab`
+   into this folder. Already cloned? It skips them (set `UPDATE=1` to also
+   `git pull --ff-only`).
+2. **Prepares the Python env** for `TA-agents` if `pyproject.toml` is present —
+   uses `uv` if available, otherwise `python3 -m venv` + `pip install -e ".[dev]"`.
+3. **Reminds you to set your git identity** if `user.email` is unset, so DCO
+   sign-off (`git commit -s`) works.
+
+It is idempotent (safe to re-run) and never touches secrets or the `Mentees/`
+folder. Clone protocol defaults to **HTTPS** (no SSH key needed); set `USE_SSH=1`
+to use SSH remotes. Read it before running: [`bin/setup-workspace.sh`](./bin/setup-workspace.sh).
+
 ## How to use the workspace
 
 - **Project-wide decisions, docs, onboarding** → work from `TA-workspace/`.
 - **Writing agent code** → open a terminal in `TA-agents/`.
 - **Adding a learning resource** → open `TA-resources/`.
 - **Recording a decision, meeting, or learning** → open `TA-memory/`.
+- **Doing an exercise or quick experiment** → open `TA-lab/`.
 
 Every subrepo carries its own `CLAUDE.md` + `AGENTS.md` so your coding agent
 picks up the local rules automatically.

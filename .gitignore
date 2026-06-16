@@ -2,6 +2,7 @@
 /TA-agents/
 /TA-resources/
 /TA-memory/
+/TA-lab/
 
 # --- Personal data: must never be committed to any repo ---
 /Mentees/
