@@ -29,7 +29,7 @@ you change a rule, change it in both files.
   the subrepo and inspect its status before changing files.
 - Never push directly to `main`. Use a branch and PR flow.
 - Every commit must be DCO signed-off (`git commit -s`). See `CONTRIBUTING.md`.
-- Never create `.env*` files or commit secrets.
+- Never commit `.env*` files or secrets (a local, gitignored `.env` is fine).
 - The `Mentees/` folder (personal data) is outside this workspace and must never
   be committed.
 

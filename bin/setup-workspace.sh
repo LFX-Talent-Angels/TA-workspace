@@ -19,13 +19,14 @@ cd "$ROOT"
 info()  { printf '\033[1;34m==>\033[0m %s\n' "$*"; }
 warn()  { printf '\033[1;33m[warn]\033[0m %s\n' "$*"; }
 
-# Prefer SSH if available, fall back to HTTPS.
+# Default to HTTPS (works for public repos without an SSH key — best for new
+# contributors). Set USE_SSH=1 to use SSH remotes instead.
 remote_url() {
   local repo="$1"
-  if [ "${USE_HTTPS:-0}" = "1" ]; then
-    echo "https://github.com/$ORG/$repo.git"
-  else
+  if [ "${USE_SSH:-0}" = "1" ]; then
     echo "git@github.com:$ORG/$repo.git"
+  else
+    echo "https://github.com/$ORG/$repo.git"
   fi
 }
 
@@ -35,8 +36,12 @@ info "Meta-repo: $ROOT"
 # 1. Clone / update each subrepo as a first-level folder.
 for repo in "${SUBREPOS[@]}"; do
   if [ -d "$repo/.git" ]; then
-    info "$repo already cloned — pulling latest"
-    git -C "$repo" pull --ff-only || warn "$repo: could not fast-forward (local changes?)"
+    if [ "${UPDATE:-0}" = "1" ]; then
+      info "$repo already cloned — pulling latest (UPDATE=1)"
+      git -C "$repo" pull --ff-only || warn "$repo: could not fast-forward (local changes?)"
+    else
+      info "$repo already cloned — skipping (set UPDATE=1 to pull latest)"
+    fi
   elif [ -d "$repo" ]; then
     warn "$repo exists but is not a git repo — skipping clone"
   else

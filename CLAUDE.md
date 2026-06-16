@@ -69,8 +69,8 @@ The original project proposal lives in `TA-memory/proposals/original-proposal.md
 
 ## Secrets
 
-- Never create or commit `.env*` files or secrets. Use `.env.example` with
-  placeholder values only.
+- Never **commit** `.env*` files or secrets. A local `.env` (gitignored) is fine
+  for running things; only `.env.example`, with placeholder values, is committed.
 - API keys (LLM providers, Neo4j, Supabase, taxonomy APIs) are configured
   locally and via repo/org secrets in CI — never in source.
 

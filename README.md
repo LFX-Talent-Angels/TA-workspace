@@ -100,3 +100,8 @@ end of week 10, week 19, and week 26.
 
 - Code (`TA-workspace`, `TA-agents`): **Apache-2.0**.
 - Content (`TA-resources`, `TA-memory`): **CC-BY-4.0**.
+
+`TA-workspace` is mostly coordination docs plus some scripts/CI. Its scripts and
+config are **Apache-2.0** (see [`LICENSE`](./LICENSE)); its prose documentation is
+also offered under **CC-BY-4.0** so it can be reused freely alongside
+`TA-resources`/`TA-memory`.

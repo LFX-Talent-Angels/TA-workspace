@@ -4,7 +4,10 @@
     "deny": [
       "Read(./Mentees/**)",
       "Read(**/.env)",
-      "Read(**/.env.*)"
+      "Read(**/.env.local)",
+      "Read(**/.env.*.local)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)"
     ]
   }
 }
