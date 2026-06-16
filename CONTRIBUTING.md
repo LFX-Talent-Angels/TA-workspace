@@ -62,10 +62,11 @@ git config user.email "your.email@example.com"
 Forgot to sign off? Fix the last commit with `git commit --amend -s --no-edit`,
 or a range with `git rebase --signoff main`.
 
-## 4. Using AI coding agents
+## 4. Working with coding agents
 
-This project is **AI-augmented by design** — using agents (Claude Code, Codex,
-Cursor, Antigravity, …) is part of the expected workflow.
+This project is **agent-driven** — coding agents (Claude Code, Codex, Cursor,
+Antigravity, …) do the bulk of implementation and you direct them. Using one is
+the expected workflow, not a shortcut.
 
 - Your agent should read `CLAUDE.md` + `AGENTS.md` before acting. They carry the
   project rules so any compliant agent behaves consistently.

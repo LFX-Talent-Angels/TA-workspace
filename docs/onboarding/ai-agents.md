@@ -1,8 +1,9 @@
 # Setting up your AI coding agent
 
-Talent Angels is **AI-augmented by design**. You're expected to use a coding
-agent as part of your daily workflow. You can use **any** agent — the project is
-agent-agnostic.
+Talent Angels is **agent-driven**: coding agents do the bulk of implementation
+and you direct, review, and own the result. Using one is the expected workflow.
+You can use **any** agent — the project is agent-agnostic (see
+[ADR-0002](../decisions/0002-agent-driven-outcome-based.md)).
 
 ## How agent-agnostic works here
 

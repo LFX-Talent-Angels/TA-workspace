@@ -1,45 +1,72 @@
 # Roadmap
 
-Talent Angels follows Agile sprints. The plan below mirrors the deliverables in
-the original proposal (`TA-memory/proposals/original-proposal.md`). Weeks are
-relative to the program start; convert to calendar dates at kickoff.
+This is the **living, outcome-based** plan for Talent Angels. Only the next 1–2
+sprints are **committed**; everything after is a provisional direction we refine
+each sprint. The agent milestones (Locator → Connector → Pathfinder → Evaluator)
+are the fixed **north star**.
 
-## Deliverables
+> **Why outcome-based?** We develop **agent-driven** (see
+> [`docs/decisions/0002-agent-driven-outcome-based.md`](./docs/decisions/0002-agent-driven-outcome-based.md)).
+> Agent-driven work is fast, so the highest-value early effort is **foundations
+> and stack/framework definition**, not a fixed 26-week waterfall.
+>
+> History: the original 9-deliverable waterfall is archived at
+> `TA-memory/roadmap/2026-original-9-deliverable-roadmap.md`; this plan is sourced
+> from the PM's roadmap at `TA-memory/roadmap/2026-outcome-based-roadmap.md`.
 
-| #  | Deliverable                | Weeks | Focus                                                         |
-| -- | -------------------------- | ----- | ------------------------------------------------------------ |
-| 1  | Understand Knowledge Graphs | 2    | Foundations of KGs                                           |
-| 2  | Define purpose & scope      | 4    | Use case, user needs, success criteria, constraints         |
-| 3  | System Prompt Design        | 2    | Goals, role/persona, instructions, guardrails               |
-| 4  | Choose LLM                  | 2    | Base model, parameters, context window, cost/latency        |
-| 5  | Tools & Integrations        | 3    | Local tools, APIs, agent-as-tool, custom functions          |
-| 6  | Memory System               | 3    | Episodic, working, vector DB, SQL, file storage             |
-| 7  | Orchestration               | 3    | Routes/workflows, triggers, queues, A2A, error handling     |
-| 8  | User Interface              | 3    | Chat UI, web app, API endpoint, Slack/Discord bot           |
-| 9  | Testing & Events            | 3    | Unit tests, latency, quality metrics, iterate               |
+## Program goal (2026 · 26 weeks)
 
-## Meetups
+Ship a working GraphRAG agent suite — Locator, Connector, Pathfinder — validated
+in live university courses (UCA El Salvador, Mérida MX), feeding the Learning
+Tokens Proof-of-Learning (PoL) layer by Week 26.
 
-Three virtual meetups present progress:
+## NOW · COMMITTED · Sprints 1–2 · Weeks 1–4
 
-- **Meetup 1** — end of **week 10**
-- **Meetup 2** — end of **week 19**
-- **Meetup 3** — end of **week 26**
+### Sprint 1 · Wk 1–2 — Foundations
+Understand knowledge graphs + define purpose & scope.
+- Research KGs and **build a small graph of one taxonomy** (the exercise lives in
+  [`TA-lab/exercises/sprint-01-taxonomy-graph/`](../TA-lab/exercises/sprint-01-taxonomy-graph)).
+  This doubles as **familiarization** (theory + hands-on with graphs) and lets
+  mentors see how each mentee works.
+- Document use case, user needs, success criteria, constraints.
 
-Notes and slides go in `TA-memory/meetings/`.
+### Sprint 2 · Wk 3–4 — Stack & agent infrastructure
+Choose LLM + Tools & Integration + Memory System — **the stack/framework
+definition that accelerates everything after.**
+- Base model selected (params, context, cost/latency); taxonomy APIs wired;
+  vector + structured memory operational.
+- Decisions captured as ADRs in [`docs/decisions/`](./docs/decisions).
 
-## Agents we are building
+*Outcome: foundation laid for the agent suite.*
 
-- **Locator** — pinpoints skills, tasks, occupations in the taxonomies.
-- **Connector** — lists nodes directly preceding/succeeding a location.
-- **Pathfinder** — traces all routes between two locations (learning journeys).
-- **Evaluator** *(future)* — ranks paths by relevance, distance, profile fit.
+## NEXT · EMERGING · refined sprint by sprint
+
+- **Locator** — pinpoint any skill/task/occupation in the taxonomies via chat.
+- **Connector** — list the nodes directly preceding & succeeding a location.
+- **Supporting build** — system prompts, orchestration & chat interface, shaped
+  around the agents as scope firms up.
+
+*→ Locator & Connector agents live.*
+
+## LATER · DIRECTIONAL · agent north star
+
+- **Pathfinder** — discover learning journeys (all routes) between two nodes.
+- **Evaluator** *(future)* — rank paths by relevance, distance & profile fit.
+- **Deploy & validate** — partner-university courses + feed Learning Tokens PoL.
+
+*→ Pathfinder, then Evaluator.*
 
 ## Taxonomies in scope
 
 ESCO · O*NET · SFIA · BLS (Occupational Outlook Handbook) · Lightcast.
 
+## Meetups
+
+Three virtual meetups present advances: end of **week 10**, **week 19**, and
+**week 26**. Notes in `TA-memory/meetings/`.
+
 ## How this roadmap is maintained
 
-This file is the lightweight, living plan. Larger or contested changes go through
-an ADR in `docs/decisions/` and are mirrored to `TA-memory/decisions/`.
+The committed sprints are firm; NEXT/LATER are refined each sprint. Significant or
+contested changes go through an ADR in [`docs/decisions/`](./docs/decisions) and
+are mirrored to `TA-memory/decisions/`.

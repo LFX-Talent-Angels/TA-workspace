@@ -41,12 +41,21 @@ you change a rule, change it in both files.
   taxonomies, tooling).
 - `TA-memory` — project memory: the original proposal, decisions (ADRs), meeting
   notes, and learnings.
+- `TA-lab` — practice & experiments sandbox (exercises, per-mentee scratch).
+
+## Project skills
+
+Our workflows live as plain-markdown skills in `skills/<name>/SKILL.md`
+(`ta-ship`, `ta-define`, `ta-skill`, …). Claude Code runs them as `/ta-*`. **As a
+non-Claude agent, read the relevant `SKILL.md` and follow it as workflow intent** —
+there's no special runtime, just the steps. `bin/setup-workspace.sh` links them
+into each repo's `.claude/skills/`.
 
 ## Agent-agnostic behavior
 
-- Interpret Claude slash-command references (e.g. `/review`, `/ship`, `/qa`) as
-  **workflow intent**. Use your own equivalent tools/skills, or perform the
-  steps manually when no equivalent exists.
+- Interpret slash-command references (e.g. `/ta-ship`, `/ta-define`) as
+  **workflow intent**: read the matching `skills/<name>/SKILL.md` and follow it,
+  or perform the steps manually when no equivalent exists.
 - Prefer existing repo commands and conventions over inventing new workflows.
 - Keep meta-repo docs and subrepo implementation docs in sync when a change
   crosses repo boundaries.

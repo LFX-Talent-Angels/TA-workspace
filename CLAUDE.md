@@ -75,18 +75,26 @@ The original project proposal lives in `TA-memory/proposals/original-proposal.md
 - API keys (LLM providers, Neo4j, Supabase, taxonomy APIs) are configured
   locally and via repo/org secrets in CI — never in source.
 
-## Working with AI coding agents
+## Agent-driven development
 
-This project is **AI-augmented by design**. Mentees are expected to use coding
-agents (Claude Code, Codex, Cursor, Antigravity, or any other) as part of their
-daily workflow.
+This project is **agent-driven**, not just AI-assisted. Coding agents (Claude
+Code, Codex, Cursor, Antigravity, or any other) do the bulk of implementation;
+mentees direct them, review the output, and own what they submit. See
+[ADR-0002](docs/decisions/0002-agent-driven-outcome-based.md).
+
+Because agents make writing code cheap, the bottleneck moves upstream. **The
+high-value work is setup, stack/framework definition, and clear specs** — which
+is why the early sprints prioritize foundations and choosing the stack (see
+`ROADMAP.md`).
 
 - The agent must read this `CLAUDE.md` and the relevant `AGENTS.md` before
-  acting. Any agent that respects `CLAUDE.md`/`AGENTS.md` conventions will pick
-  up the same project rules.
-- Treat agent output like any other contribution: review it, test it, and sign
-  off the commit yourself. You are accountable for what you submit.
+  acting. Any agent that respects `CLAUDE.md`/`AGENTS.md` conventions picks up
+  the same project rules.
+- You are accountable for what you submit: review it, test it, and sign off the
+  commit yourself (`git commit -s`). An agent wrote it ≠ you're off the hook.
 - Document non-obvious decisions and learnings in `TA-memory`.
+- Project skills in `skills/` (run as `/ta-*`) encode our common workflows; add
+  your own (see `skills/ta-skill/`).
 
 ## gstack (optional, Claude Code skills)
 

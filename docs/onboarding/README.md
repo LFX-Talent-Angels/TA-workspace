@@ -33,7 +33,7 @@ git commit -s -m "feat: ..."
 ## 4. Set up your AI coding agent
 
 Read [`ai-agents.md`](./ai-agents.md). The short version: this project is
-AI-augmented, and every repo carries `CLAUDE.md` + `AGENTS.md` so your agent
+agent-driven, and every repo carries `CLAUDE.md` + `AGENTS.md` so your agent
 picks up the rules automatically — whichever agent you use.
 
 ## 5. Read before you build

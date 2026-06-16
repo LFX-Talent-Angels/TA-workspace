@@ -21,6 +21,15 @@ We reason over five global taxonomies: **ESCO**, **O*NET**, **SFIA**, **BLS**,
 and **Lightcast**, via three agents — **Locator**, **Connector**, and
 **Pathfinder** — backed by **Graph-RAG**.
 
+## How we build
+
+Talent Angels is **agent-driven**: coding agents (Claude Code, Codex, Cursor,
+Antigravity, …) do the bulk of implementation; mentees direct them, review, and
+own the result. Because that makes coding cheap, our early effort goes into
+**foundations and stack/framework definition**, and our plan is **outcome-based**
+(only the next 1–2 sprints are committed). See [`ROADMAP.md`](./ROADMAP.md) and
+[ADR-0002](./docs/decisions/0002-agent-driven-outcome-based.md).
+
 ## Structure
 
 This workspace is a meta-repo. The subrepos are first-level folders, each with

@@ -30,6 +30,33 @@ remote_url() {
   fi
 }
 
+# Symlink the canonical project skills (ROOT/skills/*) into a repo's
+# .claude/skills/ so coding agents pick them up. $2 is the relative path from
+# <repo>/.claude/skills/ back to ROOT/skills.
+link_project_skills() {
+  local repo_dir="$1" rel="$2" skill name
+  [ -d "$ROOT/skills" ] || return 0
+  mkdir -p "$repo_dir/.claude/skills"
+  for skill in "$ROOT/skills"/*/; do
+    [ -d "$skill" ] || continue
+    name=$(basename "$skill")
+    ln -sfn "$rel/$name" "$repo_dir/.claude/skills/$name"
+  done
+}
+
+# Symlink a repo's OWN skills (e.g. TA-lab/skills/* authored by mentees) into its
+# .claude/skills/ so they're runnable too.
+link_local_skills() {
+  local repo_dir="$1" skill name
+  [ -d "$repo_dir/skills" ] || return 0
+  mkdir -p "$repo_dir/.claude/skills"
+  for skill in "$repo_dir/skills"/*/; do
+    [ -d "$skill" ] || continue
+    name=$(basename "$skill")
+    ln -sfn "../../skills/$name" "$repo_dir/.claude/skills/$name"
+  done
+}
+
 info "Talent Angels workspace setup"
 info "Meta-repo: $ROOT"
 
@@ -51,7 +78,19 @@ for repo in "${SUBREPOS[@]}"; do
   fi
 done
 
-# 2. Prepare the Python environment for TA-agents (if present).
+# 2. Wire project skills into every repo's .claude/skills/ (symlinks; one source
+#    of truth in ROOT/skills). These symlinks are gitignored per repo.
+if [ -d "$ROOT/skills" ]; then
+  info "Linking project skills into each repo's .claude/skills/"
+  link_project_skills "$ROOT" "../../skills"            # workspace root
+  for repo in "${SUBREPOS[@]}"; do
+    [ -d "$ROOT/$repo" ] || continue
+    link_project_skills "$ROOT/$repo" "../../../skills"  # nested subrepo
+    link_local_skills "$ROOT/$repo"                      # repo's own skills (e.g. TA-lab)
+  done
+fi
+
+# 3. Prepare the Python environment for TA-agents (if present).
 if [ -f "TA-agents/pyproject.toml" ]; then
   info "Setting up Python env for TA-agents"
   if command -v uv >/dev/null 2>&1; then
@@ -68,7 +107,7 @@ if [ -f "TA-agents/pyproject.toml" ]; then
   fi
 fi
 
-# 3. Friendly reminder about DCO.
+# 4. Friendly reminder about DCO.
 if ! git config user.email >/dev/null 2>&1; then
   warn "git user.email is not set. Configure it so DCO sign-off works:"
   warn "  git config --global user.name 'Your Name'"
