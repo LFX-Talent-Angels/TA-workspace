@@ -1,6 +1,6 @@
 # ADR-0004: Split taxonomy suites into `TA-taxonomies`, consumed as a library
 
-- **Status:** Accepted
+- **Status:** Proposed — pending team confirmation at the next sync
 - **Date:** 2026-07-19
 - **Deciders:** Mentors, informed by the team's Sprint 2 suite-per-taxonomy design
 - **Mirrors:** `TA-memory/decisions/0004-repo-topology.md`

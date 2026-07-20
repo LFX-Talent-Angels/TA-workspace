@@ -1,6 +1,6 @@
 # ADR-0005: Sprint 2 tech stack
 
-- **Status:** Accepted
+- **Status:** Proposed — pending team confirmation at the next sync
 - **Date:** 2026-07-19
 - **Deciders:** Mentee team (joint Sprint 2 proposal + presentation) + mentors
 - **Mirrors:** `TA-memory/decisions/0005-sprint-2-tech-stack.md`

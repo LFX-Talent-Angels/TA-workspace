@@ -117,8 +117,9 @@ contract has stabilized (revisit end of Sprint 4 — see ADR-0004).
 
 ## Tech stack
 
-Ratified from the team's Sprint 2 proposal — see
-[ADR-0005](../decisions/0005-sprint-2-tech-stack.md).
+From the team's Sprint 2 proposal — see
+[ADR-0005](../decisions/0005-sprint-2-tech-stack.md) (ADR-0004/0005 pending
+team confirmation at the next sync; ADR-0003 is accepted).
 
 | Layer | Choice |
 | ----- | ------ |
