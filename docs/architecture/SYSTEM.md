@@ -30,8 +30,8 @@ taxonomies, accessed through a natural-language chat interface.
                      │   + vector index       │
                      └───────────┬───────────┘
                                  ▼
-              O*NET · BLS · ESCO · SFIA* (taxonomies)
-                        * structure only — see TAXONOMIES.md
+        O*NET · BLS · ESCO · SFIA* · Sweden JobTech (sources)
+                  * structure only — see TAXONOMIES.md
 ```
 
 - **Locator** — identifies and pinpoints the exact position of a skill, task, or
@@ -47,7 +47,7 @@ taxonomies, accessed through a natural-language chat interface.
 
 | Layer            | Responsibility                                                    | Lives in (`TA-agents/src/talent_angels/`) |
 | ---------------- | ----------------------------------------------------------------- | ------------------------------------------ |
-| **Taxonomies**   | Load & normalize O*NET, BLS, ESCO and SFIA (structure only) into the graph — see [`TAXONOMIES.md`](./TAXONOMIES.md) | `taxonomies/`                              |
+| **Taxonomies**   | Load & normalize O*NET, BLS, ESCO, SFIA (structure only) and Sweden JobTech into the graph — see [`TAXONOMIES.md`](./TAXONOMIES.md) | `taxonomies/`                              |
 | **Graph**        | Knowledge-graph model, ingestion, queries, Graph-RAG retrieval    | `graph/`                                   |
 | **Locator**      | Pinpoint a node from natural language                             | `locator/`                                 |
 | **Connector**    | Neighbors of a node                                               | `connector/`                               |

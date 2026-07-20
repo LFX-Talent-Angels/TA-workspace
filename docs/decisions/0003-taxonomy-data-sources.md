@@ -1,6 +1,6 @@
 # ADR-0003: Taxonomy data sources — which we adopt, and on what terms
 
-- **Status:** Proposed
+- **Status:** Accepted
 - **Date:** 2026-07-19
 - **Deciders:** Alberto Ceballos (mentor)
 - **Mirrors:** `TA-memory/decisions/0003-taxonomy-data-sources.md` (on acceptance)
@@ -95,18 +95,44 @@ data is **not** relicensed under Apache-2.0; only our code is. Attribution
 obligations are recorded per source in
 [`TAXONOMIES.md`](../architecture/TAXONOMIES.md).
 
-**8. The fifth slot is deferred to a follow-up ADR.** Lightcast's removal leaves
-room for one more source. Two candidates, both open:
+**8. Sweden JobTech takes the fifth slot.** It is adopted for exactly one
+reason: it restores the capability Lightcast provided that nothing else covers —
+**signal from live job postings**. Verified 2026-07-19 at
+<https://data.jobtechdev.se/dataset/job-ads>: ~6.9 million job advertisements
+since 2006 as bulk download, plus a Job Search API, a historical API from 2016
+"enriched with competency data", and **JobStream**, a real-time API with change
+notifications. **All distributions are CC0** — the cleanest licence in our
+entire set, cleaner than anything Lightcast ever offered.
 
-- **Sweden JobTech** — ~6.9M job ads since 2006, **CC0**, live API, taxonomy
-  already carrying `esco-occupation` / `esco-skill` concepts. This is also our
-  only viable answer to the freshness capability Lightcast provided.
-- **UK Standard Skills Classification** — Skills England, published 2026-04-30,
-  **OGL v3.0**, reportedly shipping crosswalks to ESCO, O\*NET and SFIA in one
-  package. Two caveats: its downloads are behind a sign-in we have not passed,
-  so coverage claims are unverified; and its skill weights are **LLM-generated
-  with a reproducibility failure documented in its own development report** —
-  adopt its crosswalks, distrust its scores.
+Its limits, stated plainly: it is **one country**. Swedish labour-market signal
+generalises imperfectly, and the graph must not present Swedish demand as global
+demand. Reports that its taxonomy carries `esco-occupation` / `esco-skill`
+concepts are **not yet verified** — the taxonomy site was unreachable at time of
+writing — so the ESCO alignment is a hypothesis to test at ingestion, not an
+assumption to build on.
+
+**9. Credentials are ours to build, not to source.** This project sits under
+LFDT's Learning Tokens Lab, and the obvious move would be to adopt a credential
+taxonomy (Credential Engine's CTDL, or similar) to link skills to
+qualifications. **We decline that dependency.** Proof of Learning is designed by
+this project, on mechanisms we choose, and the credential layer is our own
+output — not something a third-party taxonomy supplies. The taxonomies exist to
+answer questions about skills, tasks and occupations; what a learner earns for
+traversing them is our design surface, and keeping it unencumbered by an
+external vocabulary's licence and modelling assumptions is deliberate.
+
+**Other classifications remain open to explore, none adopted.** Worth a look if
+a concrete need appears, in no particular order: the **UK Standard Skills
+Classification** (OGL v3.0, published 2026-04-30, reportedly carrying crosswalks
+to ESCO, O\*NET and SFIA — though its downloads are sign-in gated and its skill
+weights are LLM-generated with a reproducibility failure documented in its own
+development report); **Canada's OaSIS** (OGL-Canada, ~222k weighted edges, but a
+transform of O\*NET, so it corroborates nothing independent); national
+classifications closer to where our contributors live, such as **India's NCO**
+and **Mexico's SINCO**; and thematic competence frameworks like the EU's
+**DigComp**, **GreenComp** and **EntreComp**, or NIST's **NICE Framework** for
+cybersecurity. None of these is on the critical path. Adding an occupation
+taxonomy that already crosswalks to SOC or ISCO buys coverage we largely have.
 
 ## Alternatives considered
 
@@ -121,8 +147,15 @@ room for one more source. Two candidates, both open:
 - **Semantic skill fusion across taxonomies instead of crosswalks.** Deferred,
   not rejected. It is a genuine research problem; official crosswalks are
   sufficient for Locator, Connector and Pathfinder in v1.
-- **Drop to three taxonomies and skip the fifth slot.** Viable fallback if
-  neither candidate verifies. Nothing in the architecture requires five.
+- **Drop to four sources and skip the fifth slot.** Nothing in the architecture
+  requires five. Rejected because live-postings signal is a real capability
+  gap, and Sweden JobTech fills it at zero licensing cost.
+- **Adopt a credential taxonomy (CTDL / Credential Registry).** Rejected as a
+  dependency — see decision 9. Credentials are this project's own output.
+- **Add more occupation classifications for geographic coverage** (India's NCO,
+  Mexico's SINCO, national European schemes). Rejected for now: they all
+  crosswalk to ISCO or SOC, so they add ingestion and maintenance without
+  adding structural reach.
 
 ## Consequences
 
@@ -131,17 +164,20 @@ the published graph is clean by construction. O\*NET's native RDF removes a
 parsing layer and drops straight into a triple store or Neo4j via n10s. Pinned
 snapshots make ingestion reproducible and CI-testable.
 
-**Harder.** We lose live market freshness — the one capability with no open
-global substitute. Sweden JobTech covers it at one country's scale; a monthly
-`schema.org/JobPosting` extraction from Common Crawl is the only open path to
-multi-country coverage, and nobody has published one. Treat that as a possible
-project contribution, not a dependency.
+**Harder.** Live market signal is now single-country. Sweden JobTech is
+excellent data under an ideal licence, but Swedish demand is not global demand,
+and any agent surfacing "what's in demand" must say whose market it is speaking
+about. A monthly `schema.org/JobPosting` extraction from Common Crawl is the
+only open path to multi-country coverage and nobody has published one — a
+possible project contribution, not a dependency.
 
 **Follow-ups.**
 
 - Update `docs/sprints/sprint-01-knowledge-graphs.md`, whose Lightcast section
   describes a data-share model no longer reachable.
-- Verify the UK SSC crosswalks behind its sign-in, then decide the fifth slot.
+- Verify whether the JobTech taxonomy really carries ESCO concept mappings; the
+  site was unreachable when this was written. If it does, the Swedish data joins
+  the graph almost free; if not, mapping it is real work to scope.
 - Confirm whether Australia's ASC is superseded by the National Skills Taxonomy
   (`NationalSkillsTaxonomy@jobsandskills.gov.au`); site unreachable from outside
   Australia in two independent attempts.

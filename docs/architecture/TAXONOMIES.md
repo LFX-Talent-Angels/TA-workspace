@@ -16,6 +16,7 @@
 | **BLS / SOC** | ✅ Adopted | US public domain | The occupation spine every other source crosswalks into; employment projections |
 | **ESCO** | ✅ Adopted | Free with attribution (EC Decision 2011/833/EU — *not* Creative Commons) | 28-language labels; the European occupation view |
 | **SFIA** | ⚠️ Structure only, never bundled | Free for internal use; redistribution is fee-bearing | Responsibility levels 1–7 — a dimension no other source has |
+| **Sweden JobTech** | ✅ Adopted | **CC0** | Live job-postings signal — what people are actually hiring for, right now |
 | **Lightcast** | ❌ Not adopted | Non-commercial; AI use requires a written contract | *(was: job-title normalization, monthly freshness)* |
 
 Sprint 1 slices, one per taxonomy, live in
@@ -122,6 +123,38 @@ public and Apache-2.0, so:
 **This is the general pattern for any licence-gated source: store the pointer,
 fetch the payload at runtime.** <https://sfia-online.org/en/about-sfia/licensing-sfia>
 
+### Sweden JobTech — live market signal
+
+Swedish Public Employment Service (Arbetsförmedlingen). Unlike the other four,
+this is not a curated classification — it is **primary evidence**: what
+employers actually advertised, when, and in what words.
+
+What it offers (verified 2026-07-19 at
+<https://data.jobtechdev.se/dataset/job-ads>):
+
+- **~6.9 million job advertisements since 2006** as a bulk file.
+- **JobStream API** — real-time access to published postings with change
+  notifications.
+- **Historical Job Postings API** — 2016 onward, "enriched with competency
+  data".
+- **Job Search API** and **JobAdLinks** for structured querying.
+
+**All distributions are CC0** — public domain dedication, no attribution
+required, no restriction on commercial or AI use. It is the cleanest licence in
+our set, and cleaner than anything Lightcast ever offered.
+
+Its role is to answer the questions a curated taxonomy structurally cannot:
+which skills are being asked for together, which are rising, how employers
+actually phrase a role. That is the capability we lost with Lightcast.
+
+⚠️ **Two honest limits.** First, it is **one country** — Swedish demand is not
+global demand, and any agent surfacing "what's in demand" must name whose market
+it means. Second, reports that the JobTech taxonomy carries `esco-occupation` /
+`esco-skill` concepts are **unverified** (their taxonomy site was unreachable
+when this was written). If true, alignment with ESCO is nearly free; if not,
+mapping postings to our graph is real work. **Test this before scoping any
+feature on it.**
+
 ### Lightcast — not adopted
 
 Kept here because the reasoning is worth preserving, not because we use it.
@@ -183,7 +216,7 @@ than no ranking.
 | --- | --- | --- |
 | Job-title normalization | **O\*NET Job Titles** — 57,543 lay titles mapped to O\*NET-SOC, CC BY 4.0 — plus **ESCO altLabels** (30,417 English alternative labels across 28 languages), plus **JobBERT-v3** (MIT licence, trained on ~21M title-skill pairs in EN/ES/DE/ZH) for semantic matching of titles never seen before | Covered, arguably better |
 | Weighted skill edges | **O\*NET Essential + Transferable Skills** — 62,580 edges with Importance *and* Level, plus published statistics | Covered, more rigorous |
-| Market freshness | **BLS Employment Projections** for authoritative slow signal; **Sweden JobTech** (~6.9M ads since 2006, CC0, live API, ESCO-linked) if adopted for the fifth slot | Partially — no open global equivalent exists |
+| Market freshness | **Sweden JobTech** — ~6.9M ads since 2006, CC0, live JobStream API — for actual hiring signal; **BLS Employment Projections** for authoritative slow signal | Covered for one country; no open global equivalent exists |
 
 The recommended Locator resolution chain: exact match against a merged
 O\*NET + ESCO alias table → JobBERT-v3 nearest-neighbour with a confidence
@@ -202,10 +235,28 @@ floor → fail loudly rather than guess. Lexical search alone does not solve
   above — not reconstructed later from memory.
 - **Licence-gated sources store pointers, not payloads.**
 
+## Not in scope, deliberately
+
+**Credentials are ours to build.** The obvious move for a Learning Tokens Lab
+project would be to adopt a credential taxonomy — Credential Engine's CTDL or
+similar — to link skills to qualifications. We decline that dependency. Proof of
+Learning is designed by this project, on mechanisms we choose; the credential
+layer is our **output**, not a third party's vocabulary. The taxonomies answer
+questions about skills, tasks and occupations. What a learner earns for
+traversing them is our design surface, and we keep it unencumbered.
+
+**Other classifications, open to explore, none adopted.** Worth a look only if a
+concrete need appears: the UK **Standard Skills Classification** (OGL v3.0,
+carries crosswalks but sign-in gated, and its weights are LLM-generated with a
+documented reproducibility failure); **Canada's OaSIS** (OGL-Canada, ~222k
+weighted edges, but an O\*NET transform); national schemes closer to our
+contributors such as **India's NCO** and **Mexico's SINCO**; and thematic
+frameworks like the EU's **DigComp**, **GreenComp**, **EntreComp**, or NIST's
+**NICE Framework**. Adding an occupation taxonomy that already crosswalks to SOC
+or ISCO buys coverage we largely have.
+
 ## Open items
 
-- **Fifth slot undecided** — Sweden JobTech vs. UK Standard Skills
-  Classification. See ADR-0003.
 - **Graph store still unresolved.** All four Sprint 1 mentees used Neo4j and
   this document assumes Cypher/RDF idioms, but `SYSTEM.md` still lists the
   choice as open and no ADR records it. O\*NET and ESCO both shipping native RDF
@@ -213,3 +264,5 @@ floor → fail loudly rather than guess. Lexical search alone does not solve
 - **O\*NET's postings vendor** may be Lightcast (per its 2022 methodology
   report, unconfirmed for 2026). If so, O\*NET's *Hot Technology* flags are
   downstream of a pipeline that just closed.
+- **JobTech's ESCO alignment is unverified** — confirm before scoping any
+  feature that assumes Swedish postings map cleanly onto our graph.
