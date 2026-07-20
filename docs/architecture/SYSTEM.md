@@ -91,7 +91,7 @@ Contract rules (these do not bend):
 | **`TA-workspace`** | This meta-repo: cross-repo docs, ADRs, onboarding | You are here |
 | **`TA-lab`** | Exercises, spikes, per-mentee scratch | Sprint work starts here |
 | **`TA-resources`** / **`TA-memory`** | Educational resources / project memory | Content repos |
-| *`TA-web` (future)* | Chat frontend | Created when frontend work starts |
+| **`TA-app`** | Chat frontend (app) | Placeholder repo; its stack is decided via ADR when frontend work starts |
 
 **Coupling rule:** `TA-agents` consumes `TA-taxonomies` as a **versioned Python
 library**, not over the network. The suite contract is the boundary. Promotion
@@ -99,7 +99,7 @@ of `TA-taxonomies` to a standalone service is a later, cheap decision *if* the
 contract has stabilized (revisit end of Sprint 4 — see ADR-0004).
 
 ```
-        user ── chat ──▶ TA-web (future)
+        user ── chat ──▶ TA-app (frontend)
                             │
                             ▼  HTTP (FastAPI edge)
                      ┌─────────────────┐

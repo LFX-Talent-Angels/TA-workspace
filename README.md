@@ -53,6 +53,7 @@ TA-workspace/                 ← this meta-repo
 │   └── meetups/              ← meetup notes + templates
 ├── TA-agents/                ← subrepo: assistant runtime + skills (Python)
 ├── TA-taxonomies/            ← subrepo: taxonomy suites + ingestion (Python)
+├── TA-app/                   ← subrepo: chat frontend (stack TBD)
 ├── TA-resources/             ← subrepo: shared educational resources
 ├── TA-memory/                ← subrepo: project memory (proposal, decisions, log)
 └── TA-lab/                   ← subrepo: practice & experiments sandbox
@@ -68,6 +69,7 @@ TA-workspace/                 ← this meta-repo
 | [`TA-resources`](../TA-resources)                | Educational resources for all contributors |
 | [`TA-memory`](../TA-memory)                      | Project memory: proposal, ADRs, notes      |
 | [`TA-lab`](../TA-lab)                            | Practice & experiments sandbox (exercises) |
+| [`TA-app`](../TA-app)                            | Chat frontend (placeholder; stack TBD)     |
 
 ## Setup
 

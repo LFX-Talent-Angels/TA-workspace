@@ -1,6 +1,7 @@
 # --- Subrepos: each has its own git history; the meta-repo must NOT track them ---
 /TA-agents/
 /TA-taxonomies/
+/TA-app/
 /TA-resources/
 /TA-memory/
 /TA-lab/

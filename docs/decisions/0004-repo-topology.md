@@ -42,7 +42,8 @@ Forces:
 3. **Coupling is a versioned Python library**, not HTTP: `TA-agents` depends on
    `ta-taxonomies` as a package. The suite contract (documented in
    `SYSTEM.md`) is the only surface `TA-agents` may import.
-4. **`TA-web`** is created later, when frontend work actually starts.
+4. **`TA-app`** (the chat frontend) is created now as a named placeholder;
+   its stack is decided via its own ADR when frontend work actually starts.
 5. **Revisit at end of Sprint 4:** if the suite contract has stabilized and an
    operational need exists (independent scaling/deploy), promoting
    `TA-taxonomies` to a service is a cheap, contained decision.

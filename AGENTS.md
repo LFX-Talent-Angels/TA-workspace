@@ -44,6 +44,8 @@ you change a rule, change it in both files.
 - `TA-memory` — project memory: the original proposal, decisions (ADRs), meeting
   notes, and learnings.
 - `TA-lab` — practice & experiments sandbox (exercises, per-mentee scratch).
+- `TA-app` — chat frontend. Placeholder; stack decided via ADR when frontend
+  work starts.
 
 ## Project skills
 
