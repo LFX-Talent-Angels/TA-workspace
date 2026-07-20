@@ -17,9 +17,11 @@ living, data-driven ontology of talent — queried through AI Graph Agents that
 build and traverse knowledge graphs — to bridge human skills development and
 AI-driven work.
 
-We reason over five global taxonomies: **ESCO**, **O*NET**, **SFIA**, **BLS**,
-and **Lightcast**, via three agents — **Locator**, **Connector**, and
-**Pathfinder** — backed by **Graph-RAG**.
+We reason over global taxonomies — **ESCO**, **O*NET**, **SFIA**, **BLS**, and
+a fifth slot under review — through **one main assistant** dispatching four
+map-work capabilities: **Locator**, **Connector**, **Pathfinder**, and
+**Evaluator**, backed by **Graph-RAG**. See
+[`docs/architecture/SYSTEM.md`](./docs/architecture/SYSTEM.md).
 
 ## How we build
 
@@ -49,7 +51,8 @@ TA-workspace/                 ← this meta-repo
 │   ├── onboarding/           ← set up your AI coding agent
 │   ├── decisions/            ← Architecture Decision Records (ADRs)
 │   └── meetups/              ← meetup notes + templates
-├── TA-agents/                ← subrepo: the AI Graph Agents (Python)
+├── TA-agents/                ← subrepo: assistant runtime + skills (Python)
+├── TA-taxonomies/            ← subrepo: taxonomy suites + ingestion (Python)
 ├── TA-resources/             ← subrepo: shared educational resources
 ├── TA-memory/                ← subrepo: project memory (proposal, decisions, log)
 └── TA-lab/                   ← subrepo: practice & experiments sandbox
@@ -60,7 +63,8 @@ TA-workspace/                 ← this meta-repo
 | Repo                                            | What it holds                              |
 | ----------------------------------------------- | ------------------------------------------ |
 | [`TA-workspace`](.)                             | Meta-repo: docs, decisions, onboarding     |
-| [`TA-agents`](../TA-agents)                      | Main project: AI Graph Agents + Graph-RAG  |
+| [`TA-agents`](../TA-agents)                      | Main project: assistant runtime + skills   |
+| [`TA-taxonomies`](../TA-taxonomies)              | Taxonomy suites: ingestion, schemas, tools |
 | [`TA-resources`](../TA-resources)                | Educational resources for all contributors |
 | [`TA-memory`](../TA-memory)                      | Project memory: proposal, ADRs, notes      |
 | [`TA-lab`](../TA-lab)                            | Practice & experiments sandbox (exercises) |

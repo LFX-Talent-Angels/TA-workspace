@@ -20,7 +20,7 @@ Ship a working GraphRAG agent suite — Locator, Connector, Pathfinder — valid
 in live university courses (UCA El Salvador, Mérida MX), feeding the Learning
 Tokens Proof-of-Learning (PoL) layer by Week 26.
 
-## NOW · COMMITTED · Sprints 1–2 · Weeks 1–4
+## NOW · COMMITTED · Sprints 1–3 · Weeks 1–6
 
 ### Sprint 1 · Wk 1–2 — Foundations
 Understand knowledge graphs + define purpose & scope. Detailed brief (goal,
@@ -39,7 +39,17 @@ definition that accelerates everything after.**
   vector + structured memory operational.
 - Decisions captured as ADRs in [`docs/decisions/`](./docs/decisions).
 
-*Outcome: foundation laid for the agent suite.*
+*Outcome (delivered): the team's joint architecture — one main assistant +
+Locate/Connect/Pathfind as skills — and the stack, ratified as
+[ADR-0003](./docs/decisions/0003-agent-plus-skills-architecture.md),
+[ADR-0004](./docs/decisions/0004-repo-topology.md), and
+[ADR-0005](./docs/decisions/0005-sprint-2-tech-stack.md).*
+
+### Sprint 3 · Wk 5–6 — Suites & the walking-skeleton assistant
+Port each Sprint 1 graph into a **suite** in `TA-taxonomies` (one per mentee)
+and run a first end-to-end assistant (Locate + Connect over two suites) in
+`TA-agents`. Brief:
+[`docs/sprints/sprint-03-suites-and-assistant.md`](./docs/sprints/sprint-03-suites-and-assistant.md).
 
 ## NEXT · EMERGING · refined sprint by sprint
 
@@ -53,14 +63,18 @@ definition that accelerates everything after.**
 ## LATER · DIRECTIONAL · agent north star
 
 - **Pathfinder** — discover learning journeys (all routes) between two nodes.
-- **Evaluator** *(future)* — rank paths by relevance, distance & profile fit.
+- **Evaluator** — rank paths by relevance, distance & profile fit. Advanced
+  from "future" to candidate: as a *skill* over already-weighted graph data
+  (`score_paths` is in the suite contract), it may land earlier than planned
+  (see ADR-0003).
 - **Deploy & validate** — partner-university courses + feed Learning Tokens PoL.
 
 *→ Pathfinder, then Evaluator.*
 
 ## Taxonomies in scope
 
-ESCO · O*NET · SFIA · BLS (Occupational Outlook Handbook) · Lightcast.
+ESCO · O*NET · SFIA · BLS (Occupational Outlook Handbook) · fifth slot under
+licensing/cost review (originally Lightcast — pending data-sources ADR).
 
 ## Meetups
 

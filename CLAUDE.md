@@ -15,14 +15,16 @@ history. **No application code is written in this repo.**
 ## What we are building
 
 A suite of **AI Graph Agents** that reason over global skill/task/occupation
-taxonomies (ESCO, O*NET, SFIA, BLS, Lightcast) through a natural-language chat
-interface, backed by Graph-RAG. Three core agents:
+taxonomies (ESCO, O*NET, SFIA, BLS, + a fifth slot under review) through a
+natural-language chat interface, backed by Graph-RAG. Architecturally this is
+**one main assistant** that owns the user's goal, dispatching four map-work
+capabilities implemented as skills + tools (see ADR-0003):
 
-- **Locator** — pinpoints skills, tasks, and occupations inside the taxonomies.
-- **Connector** — lists the nodes directly preceding/succeeding a location.
-- **Pathfinder** — traces all routes connecting two locations (learning journeys).
-
-A future **Evaluator** ranks paths by relevance, distance, and profile fit.
+- **Locator** *(Resolve)* — pinpoints skills, tasks, occupations; attaches confidence.
+- **Connector** *(Reveal)* — lists the nodes directly preceding/succeeding a location.
+- **Pathfinder** *(Compose)* — traces routes connecting two locations (learning journeys).
+- **Evaluator** *(Rank)* — scores routes under explicit policy; advanced from
+  "future agent" to candidate skill.
 
 See `docs/architecture/SYSTEM.md` for the high-level architecture.
 
@@ -48,12 +50,13 @@ Before making changes, read local instructions in this order:
 
 ## Subrepo inventory
 
-| Folder         | Repo            | Purpose                                            | License      |
-| -------------- | --------------- | -------------------------------------------------- | ------------ |
-| `TA-agents`    | `TA-agents`     | Main project: the AI Graph Agents + Graph-RAG code | Apache-2.0   |
-| `TA-resources` | `TA-resources`  | Shared educational resources for all contributors  | CC-BY-4.0    |
-| `TA-memory`    | `TA-memory`     | Project memory: proposal, decisions, notes, log    | CC-BY-4.0    |
-| `TA-lab`       | `TA-lab`        | Practice & experiments sandbox (exercises, spikes) | Apache-2.0   |
+| Folder           | Repo             | Purpose                                             | License      |
+| ---------------- | ---------------- | --------------------------------------------------- | ------------ |
+| `TA-agents`      | `TA-agents`      | Main project: assistant runtime, skills, evals, API | Apache-2.0   |
+| `TA-taxonomies`  | `TA-taxonomies`  | Taxonomy suites: ingestion, graph schemas, contract | Apache-2.0   |
+| `TA-resources`   | `TA-resources`   | Shared educational resources for all contributors   | CC-BY-4.0    |
+| `TA-memory`      | `TA-memory`      | Project memory: proposal, decisions, notes, log     | CC-BY-4.0    |
+| `TA-lab`         | `TA-lab`         | Practice & experiments sandbox (exercises, spikes)  | Apache-2.0   |
 
 The original project proposal lives in `TA-memory/proposals/original-proposal.md`.
 
