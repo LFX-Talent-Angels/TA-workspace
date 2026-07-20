@@ -1,9 +1,9 @@
-# ADR-0003: Taxonomy data sources — which we adopt, and on what terms
+# ADR-0006: Taxonomy data sources — which we adopt, and on what terms
 
 - **Status:** Accepted
 - **Date:** 2026-07-19
 - **Deciders:** Alberto Ceballos (mentor)
-- **Mirrors:** `TA-memory/decisions/0003-taxonomy-data-sources.md` (on acceptance)
+- **Mirrors:** `TA-memory/decisions/0006-taxonomy-data-sources.md` (on acceptance)
 
 ## Context
 

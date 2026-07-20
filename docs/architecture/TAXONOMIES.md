@@ -5,7 +5,7 @@
 > explorations become when read together.
 >
 > **What decisions were made and why** lives in
-> [ADR-0003](../decisions/0003-taxonomy-data-sources.md). This document
+> [ADR-0006](../decisions/0006-taxonomy-data-sources.md). This document
 > describes **what we build**. Access terms verified 2026-07-19.
 
 ## At a glance
@@ -161,7 +161,7 @@ Kept here because the reasoning is worth preserving, not because we use it.
 Programmatic access runs $41,000–50,000/yr; the licence excludes commercial use
 and requires a written contract for *"artificial intelligence purposes"*; and
 the free API tier ended 2026-02-13 with three days' notice. Full evidence in
-[ADR-0003](../decisions/0003-taxonomy-data-sources.md).
+[ADR-0006](../decisions/0006-taxonomy-data-sources.md).
 
 Its best idea is worth replicating: a **job-title normalization layer** mapping
 ~75,000 messy real-world titles to canonical occupations. We rebuild that from

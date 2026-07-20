@@ -35,13 +35,17 @@ you change a rule, change it in both files.
 
 ## Subrepo inventory
 
-- `TA-agents` — main project: AI Graph Agents (Locator, Connector, Pathfinder)
-  and the Graph-RAG layer. Python.
+- `TA-agents` — main project: the assistant runtime (main assistant + Locate/
+  Connect/Pathfind/Evaluate skills), evals, FastAPI edge. Python.
+- `TA-taxonomies` — taxonomy suites: per-taxonomy ingestion pipelines, graph
+  schemas, crosswalks, and the suite contract. Python. One mentee per suite.
 - `TA-resources` — shared educational resources (knowledge graphs, AI agents,
   taxonomies, tooling).
 - `TA-memory` — project memory: the original proposal, decisions (ADRs), meeting
   notes, and learnings.
 - `TA-lab` — practice & experiments sandbox (exercises, per-mentee scratch).
+- `TA-app` — chat frontend. Placeholder; stack decided via ADR when frontend
+  work starts.
 
 ## Project skills
 

@@ -348,7 +348,7 @@ of Locator, Connector and Pathfinder.
 | --- | --- | --- |
 | O\*NET | Aman Kumar Sarraf | The reproducible-pipeline standard: loader, self-verifying checks, containerised Neo4j, correct CC BY 4.0 attribution |
 | ESCO | Alejandro Kantun | Full-scale load then a scoped slice; documented its own bugs and the n10s/AuraDB incompatibility; raised the missing-edge-weights gap |
-| SFIA | Shubhang Sinha | Modelled responsibility levels as first-class nodes; **flagged SFIA's restrictive licensing** — the finding that triggered ADR-0003 |
+| SFIA | Shubhang Sinha | Modelled responsibility levels as first-class nodes; **flagged SFIA's restrictive licensing** — the finding that triggered ADR-0006 |
 | BLS | Vishwajit | The deepest taxonomy research, including the digit-by-digit SOC hierarchy and the first cross-taxonomy comparison |
 | Lightcast | mentor | The evidence for *not* adopting it |
 
@@ -356,7 +356,7 @@ of Locator, Connector and Pathfinder.
 realisation that two of the five taxonomies cannot be used as the project
 assumed. Lightcast is priced out and licence-blocked for AI use; SFIA cannot be
 redistributed in a public repository. Both are recorded in
-[ADR-0003](../decisions/0003-taxonomy-data-sources.md).
+[ADR-0006](../decisions/0006-taxonomy-data-sources.md).
 
 **Read next:** [`docs/architecture/TAXONOMIES.md`](../architecture/TAXONOMIES.md)
 — the five explorations synthesised into one design contract: per-taxonomy
@@ -365,7 +365,7 @@ profiles, the unified model, and the ingestion rules TA-agents implements.
 > ⚠️ **The Lightcast section above is out of date.** It describes a data-share
 > and free-API model that no longer exists — Lightcast ended free API access on
 > 2026-02-13. Kept unedited as a record of what we believed when the sprint was
-> briefed. See ADR-0003 for what is true now.
+> briefed. See ADR-0006 for what is true now.
 
 ---
 
