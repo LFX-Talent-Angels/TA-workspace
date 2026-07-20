@@ -87,3 +87,94 @@ Three virtual meetups present advances: end of **week 10**, **week 19**, and
 The committed sprints are firm; NEXT/LATER are refined each sprint. Significant or
 contested changes go through an ADR in [`docs/decisions/`](./docs/decisions) and
 are mirrored to `TA-memory/decisions/`.
+
+---
+
+## Deliverables · Version 1
+
+A more granular, week-by-week view of the work planned for the 26-week program.
+This sits alongside the outcome-based plan above and is refined as each phase
+completes.
+
+### Week 1 — Understand the Knowledge Graph
+
+Get a working mental model of what a Knowledge Graph is, why it matters for this
+project, and how the taxonomies fit inside it. Outcome feeds directly into Sprint 1.
+
+### Weeks 2–3 — Taxonomy Deep-Dive & Schema Design
+
+Understand the **differences, pros, and cons** of each taxonomy in scope:
+**ESCO · O*NET · BLS · Lightcast · SFIA**.
+
+- Compare coverage, structure, licensing, and update cadence across all five.
+- Design the **KG schema** — the better the pre-processing, the less effort agents
+  need to reason in coalition later. (This is the same Normalization term Alejandro and Vishwajit put forward).
+- Define **success criteria** and **constraints** for the agent suite.
+- Choose the **tech stack** (graph DB, LLM framework, memory stores, interfaces).
+
+*Outcome: schema decided, tech stack decided, success criteria documented in ADRs.*
+
+### Week 4 — System Prompt Design
+
+Design and iterate on the system prompts that govern each agent's behaviour,
+persona, and tool-use boundaries.
+
+### Days 1–2 of Week 5 — Choose LLM
+
+Select the base model driving the agents:
+
+- **Open-source path** — Gemma is the leading candidate.
+- **Closed-source path** — Claude is the leading candidate.
+
+Decision captured as an ADR in [`docs/decisions/`](./docs/decisions).
+
+### Weeks 5–7 — Tools & Integration
+
+- Push all taxonomy data into the **GraphDB** using the schema agreed above;
+  handle preprocessing (missing values, deduplication).
+- Design and set up the **agentic system** locally using the Tech Stack that we have chosen,
+  with each agent clearly defined and wired to the graph.
+
+*Outcome: data pipeline live, agents running locally against the populated graph.*
+
+### Weeks 7–9 — Memory Systems
+
+| Layer | Store | Rationale |
+|---|---|---|
+| **Conversation memory** | Postgres | Agent turn history |
+| **User memory** | Postgres | User data — persistence required |
+| **Knowledge memory** | ArangoDB | Graph-native data storage |
+| **Workflow memory** | LangGraph state | No separate DB needed |
+| **Semantic retrieval** | Vector DB | Embedding-based lookup |
+
+*Outcome: all memory layers wired and tested end-to-end.*
+
+### Weeks 9–13 — Orchestration
+
+- **Routes / Workflows** — define how tasks flow between agents.
+- **Triggers** — events that initiate or hand off work.
+- **Error handling** — graceful failure, retries, and logging.
+- **Agent-to-Agent (A2A)** — inter-agent communication protocol.
+- **Message queues** — Kafka is the likely choice for durable async messaging.
+
+*Outcome: full multi-agent orchestration running reliably under test load.*
+
+### Weeks 13–15 — User Interface
+
+- **Chat interface** (frontend) — the primary end-user touchpoint.
+- **API endpoint** — for developers integrating programmatically.
+- No Discord bot in scope for this version.
+
+*Outcome: usable interface shipped and connected to the agent backend.*
+
+### Weeks 15–20 — Testing
+
+- **Unit tests** for every parameter and every stage of the workflow.
+- Iteration and improvements driven by test results and mentor feedback.
+
+*At least 5 weeks allocated; extend into buffer if needed.*
+
+### Weeks 21–26 — Buffer
+
+Reserved for scope extensions, rework from testing, stretch goals, and final
+polish before the Week 26 meetup and PoL hand-off.
