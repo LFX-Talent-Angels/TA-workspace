@@ -21,7 +21,7 @@ set -euo pipefail
 
 ORG="LFX-Talent-Angels"
 BRANCH="main"
-DEFAULT_REPOS=("TA-workspace" "TA-agents" "TA-resources" "TA-memory" "TA-lab")
+DEFAULT_REPOS=("TA-workspace" "TA-agents" "TA-taxonomies" "TA-app" "TA-resources" "TA-memory" "TA-lab")
 
 REPOS=("$@")
 [ "${#REPOS[@]}" -eq 0 ] && REPOS=("${DEFAULT_REPOS[@]}")
