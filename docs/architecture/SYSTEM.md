@@ -112,7 +112,8 @@ contract has stabilized (revisit end of Sprint 4 — see ADR-0004).
                               ▼
                     Neo4j (one graph per suite) + vector index
                               ▲
-            ESCO · O*NET · SFIA · BLS · (5th slot under review)
+         O*NET · BLS · ESCO · SFIA* · Sweden JobTech (sources)
+                  * structure only — see TAXONOMIES.md
 ```
 
 ## Tech stack
@@ -133,11 +134,13 @@ team confirmation at the next sync; ADR-0003 is accepted).
 
 ## Taxonomies in scope
 
-ESCO · O*NET · SFIA · BLS. The **fifth slot** is open: Lightcast was dropped
-on licensing/cost/reliability evidence — see
-[ADR-0006](../decisions/0006-data-sources-lightcast.md). Each suite
-covers a different gap (economic signal, competency levels, weighted skill
-edges, multilingual scale); the assistant's plan picks suites per question.
+**O*NET · BLS · ESCO · SFIA (structure only) · Sweden JobTech** — decided in
+[ADR-0006](../decisions/0006-taxonomy-data-sources.md) (Lightcast dropped on
+licensing/cost/durability evidence; JobTech restores live-postings signal,
+CC0). Source-by-source terms, attribution, and the data model live in
+[`TAXONOMIES.md`](./TAXONOMIES.md). Each suite covers a different gap
+(economic signal, competency levels, weighted skill edges, multilingual
+scale, market freshness); the assistant's plan picks suites per question.
 
 ## Two dynamic functions (from the proposal)
 
@@ -147,7 +150,7 @@ edges, multilingual scale); the assistant's plan picks suites per question.
 ## Open questions (decide via ADR)
 
 - Vector index: pgvector vs. Neo4j native (benchmark during Sprint 3–4).
-- Fifth taxonomy slot: Sweden JobTech vs. UK SSC (amend ADR-0006 with the team).
-- Cross-taxonomy crosswalk design (SOC/ISCO hub; SFIA bridges skill-to-skill).
+- Whether JobTech's taxonomy really carries ESCO mappings (verify at
+  ingestion — ADR-0006 follow-up).
 - Run-log / session persistence technology.
 - When (if ever) `TA-taxonomies` becomes a service — revisit end of Sprint 4.

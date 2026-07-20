@@ -57,7 +57,8 @@ Requirements carried from the team's Sprint 1 findings:
 ## Out of scope
 
 Pathfind beyond a stub · Evaluate/scoring policies · frontend · the fifth
-taxonomy slot (pending data-sources ADR) · cross-taxonomy crosswalk edges.
+suite (Sweden JobTech, ADR-0006 — joins after the first four are ported) ·
+cross-taxonomy crosswalk edges.
 
 ## Team dynamic
 

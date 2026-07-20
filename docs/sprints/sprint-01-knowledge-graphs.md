@@ -336,6 +336,39 @@ CREATE (oc1)-[:REQUIRES_SKILL {type: 'essential'}]->(sk1);
 
 ---
 
+## Outcomes
+
+Sprint 1 is closed. All five taxonomies were explored, each slice lives in
+[`TA-lab/mentees/<handle>/sprint-01/`](https://github.com/LFX-Talent-Angels/TA-lab/tree/main/mentees),
+and all five folders share a common shape: a `NOTES.md`, a `graph.cypher` with
+the `source`/`source_id` convention, and a `queries.cypher` framed as previews
+of Locator, Connector and Pathfinder.
+
+| Taxonomy | Built by | Contributed |
+| --- | --- | --- |
+| O\*NET | Aman Kumar Sarraf | The reproducible-pipeline standard: loader, self-verifying checks, containerised Neo4j, correct CC BY 4.0 attribution |
+| ESCO | Alejandro Kantun | Full-scale load then a scoped slice; documented its own bugs and the n10s/AuraDB incompatibility; raised the missing-edge-weights gap |
+| SFIA | Shubhang Sinha | Modelled responsibility levels as first-class nodes; **flagged SFIA's restrictive licensing** — the finding that triggered ADR-0006 |
+| BLS | Vishwajit | The deepest taxonomy research, including the digit-by-digit SOC hierarchy and the first cross-taxonomy comparison |
+| Lightcast | mentor | The evidence for *not* adopting it |
+
+**What the sprint actually produced** was not five graphs — it was the
+realisation that two of the five taxonomies cannot be used as the project
+assumed. Lightcast is priced out and licence-blocked for AI use; SFIA cannot be
+redistributed in a public repository. Both are recorded in
+[ADR-0006](../decisions/0006-taxonomy-data-sources.md).
+
+**Read next:** [`docs/architecture/TAXONOMIES.md`](../architecture/TAXONOMIES.md)
+— the five explorations synthesised into one design contract: per-taxonomy
+profiles, the unified model, and the ingestion rules TA-agents implements.
+
+> ⚠️ **The Lightcast section above is out of date.** It describes a data-share
+> and free-API model that no longer exists — Lightcast ended free API access on
+> 2026-02-13. Kept unedited as a record of what we believed when the sprint was
+> briefed. See ADR-0006 for what is true now.
+
+---
+
 *Source: compiled from the "LFX TA — Sprint 1, Knowledge Graphs" brief. This is
 a learning compilation of AI-generated overviews; verify specifics against the
 primary sources linked above.*

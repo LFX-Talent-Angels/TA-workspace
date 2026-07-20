@@ -73,9 +73,9 @@ and run a first end-to-end assistant (Locate + Connect over two suites) in
 
 ## Taxonomies in scope
 
-ESCO · O*NET · SFIA · BLS (Occupational Outlook Handbook) · fifth slot open —
-Lightcast dropped on licensing/cost/reliability evidence, see
-[ADR-0006](./docs/decisions/0006-data-sources-lightcast.md).
+O*NET · BLS · ESCO · SFIA (structure only) · Sweden JobTech — decided in
+[ADR-0006](./docs/decisions/0006-taxonomy-data-sources.md) (Lightcast dropped;
+details in [`TAXONOMIES.md`](./docs/architecture/TAXONOMIES.md)).
 
 ## Meetups
 

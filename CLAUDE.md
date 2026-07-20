@@ -15,8 +15,8 @@ history. **No application code is written in this repo.**
 ## What we are building
 
 A suite of **AI Graph Agents** that reason over global skill/task/occupation
-taxonomies (ESCO, O*NET, SFIA, BLS, + a fifth slot under review) through a
-natural-language chat interface, backed by Graph-RAG. Architecturally this is
+taxonomies (O*NET, BLS, ESCO, SFIA structure-only, Sweden JobTech — ADR-0006)
+through a natural-language chat interface, backed by Graph-RAG. Architecturally this is
 **one main assistant** that owns the user's goal, dispatching four map-work
 capabilities implemented as skills + tools (see ADR-0003):
 

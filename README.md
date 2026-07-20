@@ -17,8 +17,8 @@ living, data-driven ontology of talent — queried through AI Graph Agents that
 build and traverse knowledge graphs — to bridge human skills development and
 AI-driven work.
 
-We reason over global taxonomies — **ESCO**, **O*NET**, **SFIA**, **BLS**, and
-a fifth slot under review — through **one main assistant** dispatching four
+We reason over global taxonomies — **O*NET**, **BLS**, **ESCO**, **SFIA**
+(structure only), and **Sweden JobTech** — through **one main assistant** dispatching four
 map-work capabilities: **Locator**, **Connector**, **Pathfinder**, and
 **Evaluator**, backed by **Graph-RAG**. See
 [`docs/architecture/SYSTEM.md`](./docs/architecture/SYSTEM.md).
