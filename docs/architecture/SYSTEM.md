@@ -30,7 +30,8 @@ taxonomies, accessed through a natural-language chat interface.
                      │   + vector index       │
                      └───────────┬───────────┘
                                  ▼
-              ESCO · O*NET · SFIA · BLS · Lightcast (taxonomies)
+        O*NET · BLS · ESCO · SFIA* · Sweden JobTech (sources)
+                  * structure only — see TAXONOMIES.md
 ```
 
 - **Locator** — identifies and pinpoints the exact position of a skill, task, or
@@ -46,7 +47,7 @@ taxonomies, accessed through a natural-language chat interface.
 
 | Layer            | Responsibility                                                    | Lives in (`TA-agents/src/talent_angels/`) |
 | ---------------- | ----------------------------------------------------------------- | ------------------------------------------ |
-| **Taxonomies**   | Load & normalize ESCO, O*NET, SFIA, BLS, Lightcast into the graph | `taxonomies/`                              |
+| **Taxonomies**   | Load & normalize O*NET, BLS, ESCO, SFIA (structure only) and Sweden JobTech into the graph — see [`TAXONOMIES.md`](./TAXONOMIES.md) | `taxonomies/`                              |
 | **Graph**        | Knowledge-graph model, ingestion, queries, Graph-RAG retrieval    | `graph/`                                   |
 | **Locator**      | Pinpoint a node from natural language                             | `locator/`                                 |
 | **Connector**    | Neighbors of a node                                               | `connector/`                               |
@@ -60,9 +61,12 @@ taxonomies, accessed through a natural-language chat interface.
 
 ## Open questions (decide via ADR)
 
-- Graph store: Neo4j vs. alternatives.
+- Graph store: Neo4j vs. alternatives. *(All Sprint 1 slices used Neo4j; O\*NET
+  and ESCO both ship native RDF — both are inputs to this decision.)*
 - Vector store / backend: Supabase pgvector vs. alternatives.
 - LLM provider(s) and framework (LangChain / LangGraph / custom).
-- How taxonomies are licensed, fetched, and refreshed.
+- ~~How taxonomies are licensed, fetched, and refreshed.~~ → resolved by
+  [ADR-0003](../decisions/0003-taxonomy-data-sources.md); the resulting model is
+  in [`TAXONOMIES.md`](./TAXONOMIES.md).
 
 Track these in `docs/decisions/` as they are resolved.
