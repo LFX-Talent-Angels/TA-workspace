@@ -133,8 +133,9 @@ team confirmation at the next sync; ADR-0003 is accepted).
 
 ## Taxonomies in scope
 
-ESCO · O*NET · SFIA · BLS. The **fifth slot** (originally Lightcast) is under
-licensing/cost review — resolved by the pending data-sources ADR. Each suite
+ESCO · O*NET · SFIA · BLS. The **fifth slot** is open: Lightcast was dropped
+on licensing/cost/reliability evidence — see
+[ADR-0006](../decisions/0006-data-sources-lightcast.md). Each suite
 covers a different gap (economic signal, competency levels, weighted skill
 edges, multilingual scale); the assistant's plan picks suites per question.
 
@@ -146,7 +147,7 @@ edges, multilingual scale); the assistant's plan picks suites per question.
 ## Open questions (decide via ADR)
 
 - Vector index: pgvector vs. Neo4j native (benchmark during Sprint 3–4).
-- Fifth taxonomy slot (data-sources ADR).
+- Fifth taxonomy slot: Sweden JobTech vs. UK SSC (amend ADR-0006 with the team).
 - Cross-taxonomy crosswalk design (SOC/ISCO hub; SFIA bridges skill-to-skill).
 - Run-log / session persistence technology.
 - When (if ever) `TA-taxonomies` becomes a service — revisit end of Sprint 4.
